@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title text-center">Movie</div>
+            </div>
+            <div style="padding-top:30px" class="panel-body">
+                <img src="images/Movie.jpg" alt="movie"
+                    style="width: 200px;height: 100px; margin-right: auto; margin-left: auto; display: block;" />
+                <br>
+                <input type="text" style="width: 100%;padding: 10px;" placeholder="Serach the movie"
+                    [(ngModel)]="movieName">
+                <br><br>
+                <button type="button" class="btn-success" (click)="doSearch()">Search</button>
+            </div>
+        </div>
+        <div *ngIf="data.length > 0 && movieName != ''">
+            Movie Name: {{data[0].Title}} ({{data[0].Year}})<br><br>
+            Rating: {{data[0].Ratings[0].Value}}<br><br>
+            Actors: {{data[0].Actors}}<br><br>
+            Genre: {{data[0].Genre}}<br><br>
+            Director: {{data[0].Director}}<br><br>
+            Runtime: {{data[0].Runtime}}<br><br>
+            Language: {{data[0].Language}}<br><br>
+            Plot: {{data[0].Plot}}
+        </div>
+    </div>
+</div>
