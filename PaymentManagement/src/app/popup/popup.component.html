@@ -1,0 +1,17 @@
+<div style="background-color: aliceblue;">
+  <div class="header">
+    <h2 mat-dialog-title>Alert</h2>
+    <span mat-dialog-close style="cursor: pointer; padding-right: 10px;">x</span>
+  </div>
+  <div class="content" style="text-align: center;">
+    <mat-dialog-content>Are you sure want to delete {{paymentSer.paymentData[data.data].username | uppercase}} data.</mat-dialog-content>
+  </div>
+  <div class="footer">
+    <mat-dialog-actions>
+      <button class="btn btn-primary" mat-dialog-close (click)="doCloseAndDelete('close')">Close</button>
+    </mat-dialog-actions>
+    <mat-dialog-actions>
+      <button class="btn btn-danger" (click)="doCloseAndDelete('delete')">Delete</button>
+    </mat-dialog-actions>
+  </div>
+</div>

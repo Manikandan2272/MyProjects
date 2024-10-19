@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header h2 {
+    margin: 0px;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

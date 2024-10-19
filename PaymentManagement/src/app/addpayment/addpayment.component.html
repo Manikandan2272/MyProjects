@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="row">
+        <drag-scroll #nav style="display: flex; flex-direction: row;" [drag-scroll-disabled]="true">
+            <div drag-scroll-item class="col-12 p-2">
+                <app-listpayment (sendIndex)="doEditAndDelete($event)" (showForm)="doShowForm($event)"></app-listpayment>
+            </div>
+            <div drag-scroll-item class="col-5 p-2">
+                <form (submit)="submitData(form)" #form="ngForm" *ngIf="showForm">
+                    <div class="row">
+                        <div class="d-flex flex-row justify-content-between mb-3">
+                            <div>
+                                <h3 class="m-0">{{title}}</h3>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-sm me-1">Save</button>
+                                <button type="button" class="btn btn-primary btn-sm me-1"
+                                    (click)="doReset(form)">Reset</button>
+                                <button type="button" class="btn btn-primary btn-sm"
+                                    (click)="doCancel(form)">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6">
+                            <label for="name" class="form-label">Username:</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter username"
+                                name="username" [(ngModel)]="username" #uname="ngModel" required minlength="3">
+                            <div class="text-danger" *ngIf="uname.errors?.['required'] && uname.touched">
+                                Please enter username
+                            </div>
+                            <div class="text-danger" *ngIf="uname.errors?.['minlength'] && uname.touched">
+                                Please enter minimum 3 characters
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="price" class="form-label">Price:</label>
+                            <input type="text" class="form-control" id="price" placeholder="Enter price"
+                                name="price" [(ngModel)]="price" #uprice="ngModel" required pattern="^(0|[1-9][0-9]*)$">
+                            <p class="text-danger" *ngIf="uprice.errors?.['required'] && uprice.touched">
+                                Please enter price
+                            </p>
+                            <p class="text-danger" *ngIf="uprice.errors?.['pattern']">
+                                Please enter numbers only
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="cardnumber" class="form-label">
+                                Card Number: <i [class]="cardType | cardtype: cardNumber" *ngIf="cardNumber"></i>
+                            </label>
+                            <input type="text" class="form-control" id="cardnumber" placeholder="Enter card number"
+                                name="cardNumber" autocomplete="off" maxlength="19" [(ngModel)]="cardNumber"
+                                appExtractcardnumber required #cnumber="ngModel">
+                            <div class="text-danger" *ngIf="cnumber.invalid && cnumber.touched">
+                                Please enter card number
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </drag-scroll>
+    </div>
+</div>
+<p-confirmDialog #dialog>
+    <p-footer class="d-flex align-items-center justify-content-center">
+        <button class="btn btn-danger btn-sm" (click)="dialog.accept()">Yes</button>
+        &nbsp;
+        <button class="btn btn-primary btn-sm" (click)="dialog.reject()">No</button>
+    </p-footer>
+</p-confirmDialog>
