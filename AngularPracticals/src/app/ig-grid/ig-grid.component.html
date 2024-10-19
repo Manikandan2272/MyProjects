@@ -1,0 +1,46 @@
+<div class="p-3">
+    <form #form="ngForm" (submit)="doSubmit(form)">
+        <div class="row">
+            <div class="col-2 mb-2">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" name="name" id="name" ngModel required placeholder="Enter name"
+                    [ngClass]="{'is-invalid': form.touched && form.invalid}">
+                <div class="text-danger" *ngIf="form.touched && form.invalid">
+                    Please enter name
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+            </div>
+        </div>
+    </form>
+    <br><br>
+    <div class="col-3">
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of userData">
+                    <ng-container *ngIf="item.isActive == true">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm"
+                                (click)="doEditAndDelete(item, 'edit')">Edit</button>
+                            &nbsp;
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="doEditAndDelete(item, 'delete')">Delete</button>
+                        </td>
+                    </ng-container>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="main" style="margin: 20px;">
+
+    <h1>Add to Cart</h1>
+
+    <div class="cart">
+
+        <label>Cart Items: </label> &nbsp;<span *ngIf="value > 0">{{value}}</span> <br><br>
+
+    </div>
+
+    <!-- <button (click)="cartValues('add')">Add to Cart</button> &nbsp; 
+    
+    <button (click)="cartValues('remove')">Remove from Cart</button> -->
+
+    <span *ngFor="let btn of button">
+        <button type="btn.type" (click)="cartValues(btn)">{{btn.label}}</button> &nbsp;
+    </span>
+
+</div>

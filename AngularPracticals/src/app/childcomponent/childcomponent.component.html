@@ -1,0 +1,24 @@
+<h1 class="text-center">Inactive Products</h1>
+
+<div style="width: 350px; margin: auto;" *ngIf="getDataFromParent.length == 0">
+    <h5 class="text-center alert alert-danger">
+        Inactive Products are not found...!
+    </h5>
+</div>
+
+<div style="width: 350px; margin: auto;" *ngIf="getDataFromParent.length > 0">
+    <table class="table table-striped table-bordered text-center">
+        <thead>
+            <tr>
+                <th class="text-center">Inactive Products</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pdtValue of getDataFromParent; index as i">
+                <td>{{pdtValue}}</td>
+                <td><button class="btn btn-primary" (click)="childToParent(i)">Mark as Active</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,44 @@
+<div style="margin: 10px;">
+
+  <h1>Reactive Form</h1>
+
+  <form (submit)="doLogin()" [formGroup]="loginForm">
+
+    <div class="mb-3">
+      <label for="exampleInputUname1" class="form-label">Username:</label>
+      <input type="text" class="form-control" id="exampleInputUname1" aria-describedby="emailHelp"
+        placeholder="Username" autocomplete="off" formControlName="username"><br>
+      <p class="alert alert-danger" *ngIf="usernameCtrl.touched && usernameCtrl.errors?.['required']">
+        Please Enter Valid Username
+      </p>
+      <p class="alert alert-danger" *ngIf="usernameCtrl.errors?.['minlength'] && usernameCtrl.touched">
+        Username Should be Minimum 3 Characters
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address:</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail"
+        autocomplete="off" formControlName="useremail"><br>
+      <p class="alert alert-danger" *ngIf="useremailCtrl.touched && useremailCtrl.errors?.['required']">
+        Enter Valid E-mail
+      </p>
+      <p class="alert alert-danger" *ngIf="useremailCtrl.touched && useremailCtrl.errors?.['email']">
+        Please Enter Your Valid E-Mail
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password:</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" autocomplete="off"
+        formControlName="userpassword"><br>
+      <p class="alert alert-danger" *ngIf="userpasswordCtrl.errors?.['pattern']">
+        Password Allow Numbers Only
+      </p>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button> &nbsp;
+    <button type="button" class="btn btn-danger" (click)="doReset()">Reset</button>
+    
+  </form>
+</div>

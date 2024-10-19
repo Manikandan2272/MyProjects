@@ -1,0 +1,26 @@
+<div style="margin: 20px;">
+
+    <h1>Greet User</h1>
+
+    <label>Username:&nbsp;&nbsp; </label> <input type="text" [(ngModel)]="inputValue" placeholder="Enter username here">
+
+    <br><br>
+
+    <button [disabled]="inputValue.length < 3" (click)="greetUserName('greet')" class="btn btn-primary">Greet</button>
+
+    &nbsp;&nbsp;
+
+    <button [disabled]="clearButton" (click)="greetUserName('clear')" class="btn btn-danger">Clear</button>
+
+    <br><br>
+
+    <span>{{username}}</span>
+
+    <br><br>
+
+    <span *ngFor="let btn of buttons">
+        <button class="btn" [ngClass]="btn.label == 'Greet' ? 'btn-primary' : 'btn-danger'" (click)="doClickEvent(btn)"
+            [disabled]="btn.label == 'Greet' ? inputValue.length < 3 : true ">{{btn.label}}</button> &nbsp;
+    </span>
+
+</div>

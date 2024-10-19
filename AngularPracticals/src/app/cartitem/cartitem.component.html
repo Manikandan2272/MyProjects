@@ -1,0 +1,13 @@
+<div class="main">
+    <h1>Add to Cart</h1>
+
+    <label>Cart Items: </label><span>{{value}}</span> <br><br>
+
+    <button (click)="cartValue('add')" class="btn btn-primary" [disabled]="addButton">Add to Cart</button> &nbsp;
+
+    <button (click)="cartValue('remove')" class="btn btn-danger" [disabled]="removeButton">Remove from Cart</button> <br><br>
+
+    <p *ngIf="value == 0">{{minimumValue}}</p>
+
+    <p *ngIf="value == 10">{{maximumValue}}</p>
+</div>

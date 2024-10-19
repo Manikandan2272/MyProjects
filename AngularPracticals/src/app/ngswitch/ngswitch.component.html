@@ -1,0 +1,64 @@
+<h1>ngSwitch</h1>
+
+<button (click)="changeBtn('personal')" class="btn btn-primary btn-lg" [class.btn-danger]="viweMode == 'personal'">Personal</button>
+
+&nbsp;&nbsp;
+
+<button (click)="changeBtn('contact')" class="btn btn-primary btn-lg" [class.btn-danger]="viweMode == 'contact'">Contact</button>
+
+&nbsp;&nbsp;
+
+<button (click)="changeBtn('address')" class="btn btn-primary btn-lg" [class.btn-danger]="viweMode == 'address'">Address</button>
+
+&nbsp;&nbsp;
+
+<button (click)="changeBtn('course')" class="btn btn-primary btn-lg" [class.btn-danger]="viweMode == 'course'">Course</button> <br><br>
+
+
+<div [ngSwitch]="viweMode">
+
+    <div *ngSwitchCase="'personal'">
+        <h3>Personal Details</h3>
+        <p>
+            Frist Name: Manikandan
+        </p>
+        <p>
+            Last Name: Saravanan
+        </p>
+    </div>
+
+    <div *ngSwitchCase="'contact'">
+        <h3>Contact Details</h3>
+        <p>
+            Email: Manikandan@gmail.com
+        </p>
+        <p>
+            Phone: 1236547890
+        </p>
+    </div>
+
+    <div *ngSwitchCase="'address'">
+        <h3>Address Details</h3>
+        <p>
+            District: Pudukkottai
+        </p>
+        <p>
+            Pin Code: 614620
+        </p>
+    </div>
+
+    <div *ngSwitchCase="'course'">
+        <h3>Course Details</h3>
+        <p>
+            Course: Angular Js
+        </p>
+        <p>
+            Training: Three Months
+        </p>
+    </div>
+
+    <div *ngSwitchDefault>
+        <p>No Data Found</p>
+    </div>
+
+</div>

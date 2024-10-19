@@ -1,0 +1,17 @@
+<div class="main">
+
+    <h1>1. Add-List Product with ngClass and ngStyle:</h1>
+
+    <h1>Add Product:</h1>
+
+    <button (click)="addProducts()">Add Product</button>
+
+    <p [hidden]="toDisplay">Toggle</p>
+
+    <h1>List Product:</h1>
+
+    <ul>
+        <li *ngFor="let pdt of products, index as i" [ngClass]="{'class':i >= 10}" [ngStyle]="{'color': i >=14 ? 'white':'black'}">{{i+1}}. {{pdt}}</li>
+    </ul>
+
+</div>

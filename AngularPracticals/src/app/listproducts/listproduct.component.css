@@ -1,0 +1,38 @@
+*{
+    font-family: cursive;
+}
+
+.maindiv{
+   text-align: center;
+}
+
+.list{
+    margin-left:860px ;
+}
+
+h1,h2{
+    text-align: center;
+}
+
+h1{
+    font-size: 50px;
+}
+
+h2{
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+
+li{
+    font-size: 20px;
+}
+
+button{
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}

@@ -1,0 +1,16 @@
+*{
+    font-size: 25px;
+}
+
+h1{
+    font-size: 30px;
+}
+
+.class{
+    background-color: blue;
+}
+
+li{
+    width:140px ;
+    border-bottom: 2px solid white;
+}
