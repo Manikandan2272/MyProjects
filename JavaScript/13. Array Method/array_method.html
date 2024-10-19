@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Methods</title>
+</head>
+
+<body onload="showUserNames()">
+
+    <!-- Ex-1 -->
+
+    <h1>1. User Name Check Availability with Array Method</h1>
+
+    <p id="unames"></p>
+
+    Username: <input type="text" id="inputbox" placeholder="enter username" onblur="checkUserNames()"> <br><br>
+
+    <span id="result"></span> <br><br>
+
+    <!-- Ex-2 -->
+
+    <h2>2. Sort Array Values</h2>
+
+    <p id="username"></p>
+
+    <button onclick="orderNames('asc')">ASC</button> &nbsp; <button onclick="orderNames('desc')">DESC</button> <br><br>
+
+    Result: <span id="res"></span> <br><br>
+
+    <!-- Ex-3 -->
+
+    <h1>3. Mirror the Values</h1>
+
+    Data: <input type="text" id="inputvalue" onblur="mirror()" placeholder="enter data"> <br><br>
+
+    Result: <span id="mirrorvalue"></span>
+
+</body>
+<script>
+
+    //Ex-1
+
+    var userNames = ["Surya", "Bharath", "Udhaya", "Vijay", "Manikandan"];
+
+    function showUserNames() {
+        document.getElementById("unames").innerHTML = "Usernames: " + userNames;
+        document.getElementById("username").innerHTML = "Usernames: " + userNames;
+    }
+
+    function checkUserNames() {
+
+        var inputBox = document.getElementById("inputbox").value;
+        var showMsg = document.getElementById("result");
+        var result = userNames.indexOf(inputBox);
+
+        if (result <= -1) {
+            showMsg.innerHTML = "Congrats Username is Available";
+            showMsg.style.color = "green";
+        } else {
+            document.getElementById("inputbox").value = "";
+            showMsg.innerHTML = "Username is Already Taken";
+            showMsg.style.color = "red";
+        }
+        
+    }
+
+    //Ex-2
+
+    function orderNames(format) {
+
+        var spanObj = document.getElementById("res");
+        var res = userNames.sort();
+        
+        if (format == 'asc') {
+            spanObj.innerHTML = res;
+        } else if (format == 'desc') {
+            spanObj.innerHTML = res.reverse();
+        }
+
+    }
+
+    //Ex-3
+
+    function mirror() {
+        var inputBoxValue = document.getElementById("inputvalue").value;
+        var mirrorValue = document.getElementById("mirrorvalue");
+        var mirrorResult = inputBoxValue.split('').reverse().join('');
+        mirrorValue.innerHTML = mirrorResult;
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Event</title>
+</head>
+
+<body>
+    <h1>1. Mouse Event:</h1>
+
+    <img src="1.jpg" alt="laptopimage" width="25%" height="25%" id="changeimage"> <br> <br> <br>
+
+    <div>
+        <img src="1.jpg" alt="laptopimage" width="15%" height="25%" onmouseover="changeImage('frontside')">
+        &nbsp;&nbsp;
+        <img src="2.jpg" alt="laptopimage" width="15%" height="25%" onmouseover="changeImage('rightside')">
+        &nbsp;&nbsp;
+        <img src="3.jpg" alt="laptopimage" width="15%" height="25%" onmouseover="changeImage('leftside')">
+        &nbsp;&nbsp;
+        <img src="4.jpg" alt="laptopimage" width="15%" height="25%" onmouseover="changeImage('backside')">
+        &nbsp;&nbsp;
+        <img src="5.jpg" alt="laptopimage" width="15%" height="25%" onmouseover="changeImage('side')">
+        &nbsp;&nbsp;
+    </div>
+</body>
+<script>
+
+    function changeImage(laptop) {
+
+        var changeImageSrc = document.getElementById("changeimage");
+
+        switch (laptop) {
+            case 'rightside':
+                changeImageSrc.src = "2.jpg";
+                break;
+
+            case 'leftside':
+                changeImageSrc.src = "3.jpg";
+                break;
+
+            case 'backside':
+                changeImageSrc.src = "4.jpg";
+                break;
+
+            case 'side':
+                changeImageSrc.src = "5.jpg";
+                break;
+
+            default:
+                changeImageSrc.src = "1.jpg";
+        }
+    }
+
+</script>
+
+</html>

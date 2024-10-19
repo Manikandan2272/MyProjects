@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: cursive;
+        }
+
+        body {
+            background-color: rgb(77 77 77);
+        }
+
+        header {
+            background-color: rgb(120, 194, 229);
+            border-bottom: 4px solid white;
+        }
+
+        ul {
+            margin-top: 20px;
+            width: 493px;
+            position: absolute;
+            right: 10px;
+            top: 0;
+        }
+
+        li {
+            list-style-type: none;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        li a:hover {
+            border-bottom: 3px solid #999797;
+        }
+
+        img {
+            padding: 16px 0 0 10px;
+        }
+
+        div {
+            background-color: rgb(108 108 108);
+            width: 400px;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 10px;
+            margin: auto;
+        }
+
+        div h1 {
+            color: #ffffff;
+        }
+
+        .border {
+            border: 2px solid #999797;
+        }
+
+        .name input {
+            width: 80%;
+            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid black;
+            color: gray;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 80%;
+            padding: 10px;
+            font-size: 15px;
+            border-radius: 5px;
+            border: 1px solid black;
+            cursor: pointer;
+            background-color: rgb(147, 228, 248);
+        }
+
+        button:hover {
+            background-color: rgb(120, 194, 229);
+        }
+
+        section {
+            margin-top: 128px;
+        }
+
+        footer {
+            background-color: rgb(120, 194, 229);
+            height: 120px;
+            margin-top: 128px;
+            border-top: 4px solid white;
+        }
+
+        p {
+            text-align: center;
+            padding-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="logo.png" alt="logo" width="50px">
+        <ul>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#Products">Products</a></li>
+            <li><a href="#Withlist">Withlist</a></li>
+            <li><a href="#Contact">Contact</a></li>
+            <li><a href="#About">About</a></li>
+        </ul>
+    </header>
+
+    <section>
+        <div class="border">
+            <h1>Login</h1>
+            <div class="name"><input type="text" name="name" placeholder="Username/Mobile No" autocomplete="off"></div>
+            <div class="name"><input type="password" name="password" placeholder="Password" autocomplete="off"></div>
+            <button>Login</button>
+        </div>
+    </section>
+
+    <footer>
+
+        <p>&copy;Copyrights 2023 Reserved | Design By Manikandan Saravanan</p>
+
+    </footer>
+
+</body>
+
+</html>

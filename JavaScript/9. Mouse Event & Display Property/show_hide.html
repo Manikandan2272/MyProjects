@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show and Hide with Display Property</title>
+</head>
+
+<body>
+    <h1>2. Show and Hide</h1>
+
+    <form action="" onsubmit="return doValidation()">
+
+        Name: <input type="text" name="name" id="name"> <br><br>
+
+        Password: <input type="text" name="password" id="password"> <br><br>
+
+        Gender: <input type="radio" name="gender" value="male" id="male" onchange="showMsg('male')">Male
+        &nbsp; <input type="radio" name="gender" value="female" id="female" onchange="showMsg('female')">Female<br><br>
+
+
+        <div id="maleform" style="display:none;">
+            Email: <input type="text" name="email"><br><br>
+
+            Address: <input type="text" name="address">
+        </div>
+
+        <div id="femaleform" style="display:none;">
+            Mobile Number: <input type="text" name="number"><br><br>
+
+            Zipcode: <input type="text" name="zipcode">
+        </div><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+<script>
+
+    function showMsg(gender) {
+
+        var maleForm = document.getElementById("maleform");
+        var feMaleForm = document.getElementById("femaleform");
+
+        if (gender == 'male') {
+            maleForm.style.display = "block";
+            feMaleForm.style.display = "none"
+        } else if (gender == 'female') {
+            feMaleForm.style.display = "block";
+            maleForm.style.display = "none";
+        }
+
+    }
+
+    function doValidation() {
+
+        var name = document.getElementById("name").value.trim();
+
+        if (name == "") {
+            alert("Please enter username");
+            return false;
+        }
+
+    }
+
+</script>
+
+</html>

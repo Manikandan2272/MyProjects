@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation & Offer Code</title>
+</head>
+
+<body>
+
+    <!-- Ex-1 -->
+
+    <h1>1. Username Check Availability in Include Method</h1>
+
+    <p id="uname"></p>
+
+    Username: <input type="text" placeholder="Enter name" id="ipf" onblur="checkUserName()"> <br><br>
+
+    Result: <span id="resultmsg"></span>
+    
+
+    <hr>
+
+    <!-- Ex-2 -->
+
+    <h1>2. Form Validation</h1>
+
+    Name: <input type="text" placeholder="Enter name" id="ipname" onblur="validateForm('name')"> &nbsp;<span
+        id="name"></span><br><br>
+
+    Email: <input type="text" placeholder="Enter email" id="ipemail" onblur="validateForm('email')"> &nbsp;<span
+        id="email"></span><br><br>
+
+    Phone: <input type="text" placeholder="Enter number" id="ipnum" onblur="validateForm('number')">&nbsp; <span
+        id="num"></span>
+    <br><br>
+
+    URL: <input type="text" placeholder="Enter url" id="ipurl" onblur="validateForm('url')">&nbsp;<span
+        id="url"></span><br><br>
+
+    <hr>
+
+    <!-- Ex-3 -->
+
+    <h1>3. Enter Offer Code</h1>
+
+    <p id="offcode"></p>
+
+    Code: <input type="text" id="ipbox" onblur="changeText()" placeholder="Enter promo code"> <br> <br>
+
+    <span id="showmsg"></span>
+
+</body>
+<script>
+
+    //Ex-1
+
+    var usernames = "Surya, Udhaya, Bharath, Vijay, Manikandan";
+    document.getElementById("uname").innerHTML = "Our Usernames: " + usernames;
+
+    function checkUserName() {
+
+        var userName = document.getElementById("ipf").value;
+        var resultMsg = document.getElementById("resultmsg");
+
+        var res = usernames.includes(userName);
+
+        if (!res) {
+            resultMsg.innerHTML = "Username is available for you";
+            resultMsg.style.color = "green";
+        } else {
+            resultMsg.innerHTML = "Username is already taken";
+            resultMsg.style.color = "red";
+            document.getElementById("ipf").value = "";
+        }
+    }
+
+    //Ex-2
+
+    function validateForm(data) {
+
+        var name = document.getElementById("ipname").value;
+        var email = document.getElementById("ipemail").value;
+        var number = document.getElementById("ipnum").value;
+        var url = document.getElementById("ipurl").value;
+
+        var usernameMsg = document.getElementById("name");
+        var emailMsg = document.getElementById("email");
+        var numberMsg = document.getElementById("num");
+        var urlMsg = document.getElementById("url");
+
+        var isNameValidate = name.match(/^[a-zA-Z ]{2,30}$/);
+        var isEmailValidate = email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+        var isNumberValidate = number.match(/^[0-9]*\d$/);
+        var isUrlValidate = url.match(/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/);
+
+        switch (data) {
+
+            case 'name':
+
+                if (isNameValidate) {
+                    usernameMsg.innerHTML = "Valid Username";
+                    usernameMsg.style.color = "green";
+                } else {
+                    usernameMsg.innerHTML = "Invalid Username";
+                    usernameMsg.style.color = "red";
+                }
+                break;
+
+            case 'email':
+
+                if (isEmailValidate) {
+                    emailMsg.innerHTML = "Valid Email";
+                    emailMsg.style.color = "green";
+                } else {
+                    emailMsg.innerHTML = "Invalid Email";
+                    emailMsg.style.color = "red";
+                }
+                break;
+
+            case 'number':
+
+                if (isNumberValidate) {
+                    numberMsg.innerHTML = "Valid Number";
+                    numberMsg.style.color = "green";
+                } else {
+                    numberMsg.innerHTML = "Invalid Number";
+                    numberMsg.style.color = "red";
+                }
+                break;
+
+            case 'url':
+
+                if (isUrlValidate) {
+                    urlMsg.innerHTML = "Valid URL";
+                    urlMsg.style.color = "green"
+                } else {
+                    urlMsg.innerHTML = "Invalid URL";
+                    urlMsg.style.color = "red";
+                }
+                break;
+
+            default:
+                alert("Somthing went wrong");
+        }
+    }
+
+    // Ex-3
+
+    document.getElementById("offcode").innerHTML = "Promo Code: brandnew15";
+
+    function changeText() {
+
+        var isInputValue = document.getElementById("ipbox").value;
+        var showMsg = document.getElementById("showmsg");
+
+        var result = isInputValue.toUpperCase();
+
+        if (!isInputValue == "") {
+            document.getElementById("ipbox").value = result.trim();
+            showMsg.innerHTML = "Your promo code applyed";
+            showMsg.style.color = "green";
+        } else {
+            showMsg.innerHTML = "Please Enter Promo Code";
+            showMsg.style.color = "red";
+        }
+
+    }
+
+</script>
+
+</html>

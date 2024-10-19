@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ToDoList Web App</title>
+</head>
+
+<body onload="doDisplay(directorList)">
+  <h1>1. ToDo List with Array Methods</h1>
+
+  Director ToDo List: <input type="text" id="inputbox" /> <br /><br />
+
+  <button onclick="manipulateList('push')">Push</button> &nbsp;
+  <button onclick="manipulateList('pop')">Pop</button> &nbsp;
+  <button onclick="manipulateList('shift')">Shift</button> &nbsp;
+  <button onclick="manipulateList('unshift')">Unshift</button> &nbsp;
+  <br /><br />
+
+  <span id="errormsg" style="display: none"></span> <br />
+
+  Search: <input type="text" onkeyup="doSearch(this.value)" /> <br /><br />
+
+  <span id="searchvalue" style="display: none"></span>
+
+  <div id="todolist"></div>
+
+  <div id="editform" style="display: none">
+    <h1>2. Edit our ToDo List</h1>
+
+    Edit Value: <input type="text" id="editbox" /> <br /><br />
+    <button onclick="doUpdate()">Update</button>
+    <span id="editIndx"></span>
+  </div>
+</body>
+<script>
+  // Array Values:
+  var directorList = [
+    "Produser",
+    "Actors",
+    "Crew & Members",
+    "Audio Launch",
+    "Promotion",
+    "Movie Release",
+  ];
+  var errorMsg = document.getElementById("errormsg");
+  var indexVal; // Globaly use array index value to stored
+  // Dynamic Visible by DOM Unorder and List using in FOR LOOP:
+  function doDisplay(mainArray) {
+    var domList = "<ul>";
+    for (var i = 0; i < mainArray.length; i++) {
+      domList +=
+        "<li>" + mainArray[i] +
+        " <input type='button' value='Edit' onclick='doEdit(" + i
+        + ")'> <input type='button' value='Delete' onclick='doDelete(" + i
+        +
+        ")'></li>";
+    }
+    domList += "</ul>";
+    document.getElementById("todolist").innerHTML = domList;
+  }
+  // Array Operation's in PUSH, POP, SHIFT, UNSHIFT Methods:
+  function manipulateList(mainArray) {
+    var inputBox = document.getElementById("inputbox").value;
+    if (!inputBox == "") {
+      switch (mainArray) {
+        case "push":
+          directorList.push(inputBox);
+          break;
+
+        case "pop":
+          directorList.pop();
+          break;
+
+        case "shift":
+          directorList.shift();
+          break;
+
+        case "unshift":
+          directorList.unshift(inputBox);
+          break;
+
+        default:
+          alert("something went worng");
+      }
+      errorMsg.style.display = "none";
+      doDisplay(directorList);
+    } else {
+      errorMsg.innerHTML = "Please Enter Some Values...";
+      errorMsg.style.color = "red";
+      errorMsg.style.display = "block";
+    }
+  }
+  // CURD Search Operation with INCLUDES and LOWERCASE Methods:
+  function doSearch(searchText) {
+    var teampArray = [];
+    var arrayLength = document.getElementById("searchvalue");
+    for (var i = 0; i < directorList.length; i++) {
+      if (directorList[i].toLowerCase().includes(searchText.toLowerCase())) {
+        teampArray.push(directorList[i]);
+      }
+    }
+    if (teampArray.length >= 1) {
+      arrayLength.innerHTML =
+        "You have found " + teampArray.length + " regards";
+      arrayLength.style.color = "green";
+      arrayLength.style.display = "block";
+    } else {
+      arrayLength.innerHTML = "No Search value is found";
+      arrayLength.style.color = "red";
+      arrayLength.style.display = "block";
+    }
+    doDisplay(teampArray);
+  }
+  // Edit and Delete and Update Operation in Array Values with Splice Method:
+  function doEdit(index) {
+    document.getElementById("editbox").value = directorList[index];
+    document.getElementById("editform").style.display = "block";
+    document.getElementById("searchvalue").style.display = "none";
+    indexVal = index;
+  }
+  function doDelete(index) {
+    if (confirm("Are you sure want to delete?")) {
+      directorList.splice(index, 1);
+      document.getElementById("editform").style.display = "none";
+      document.getElementById("searchvalue").style.display = "none";
+      alert("Deleted");
+    }
+    doDisplay(directorList);
+    console.log(directorList);
+  }
+  function doUpdate() {
+    var editBoxValue = document.getElementById("editbox").value;
+    var index = document.getElementById("editIndx").value;
+    directorList.splice(indexVal, 1, editBoxValue);
+    doDisplay(directorList);
+  }
+</script>
+
+</html>

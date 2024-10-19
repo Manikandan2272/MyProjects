@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+
+    <h1>1. Calculator using in if condition with multiple function:</h1>
+
+    <label for="num1">Number 1: </label><input type="text" id="ipf1"> <br><br>
+
+    <label for="num2">Number 2: </label><input type="text" id="ipf2"> <br><br>
+
+    <button onclick="doAdd()">Add</button> &nbsp;
+    <button onclick="doSub()">Sub</button> &nbsp;
+    <button onclick="doMul()">Mul</button> &nbsp;
+    <button onclick="doDiv()">Div</button> <br><br>
+
+    <label>Result: </label><span id="res"></span>
+
+</body>
+<script>
+
+    function doAdd() {
+
+        var num1 = document.getElementById("ipf1").value;
+        var num2 = document.getElementById("ipf2").value;
+
+        var result;
+
+        var spanObj = document.getElementById("res");
+
+        if (isNaN(num1) || isNaN(num2)) {
+            result = "Please Enter Valid Input";
+            spanObj.style.color = "red";
+
+        } else {
+            result = Number(num1) + Number(num2);
+            spanObj.style.color = "green";
+        }
+
+        spanObj.innerHTML = result;
+
+    }
+
+    function doSub() {
+
+        var num1 = document.getElementById("ipf1").value;
+        var num2 = document.getElementById("ipf2").value;
+
+        var result;
+
+        var spanObj = document.getElementById("res");
+
+        if (isNaN(num1) || isNaN(num2)) {
+            result = "Please Enter Valid Input";
+            spanObj.style.color = "red";
+        } else {
+            result = Number(num1) - Number(num2);
+            spanObj.style.color = "green";
+        }
+
+        spanObj.innerHTML = result;
+
+    }
+
+    function doMul() {
+
+        var num1 = document.getElementById("ipf1").value;
+        var num2 = document.getElementById("ipf2").value;
+
+        var result;
+
+        var spanObj = document.getElementById("res");
+
+        if (isNaN(num1) || isNaN(num2)) {
+            result = "Please Enter Valid Input";
+            spanObj.style.color = "red";
+        } else {
+            result = Number(num1) * Number(num2);
+            spanObj.style.color = "green";
+        }
+
+        spanObj.innerHTML = result;
+
+    }
+
+    function doDiv() {
+
+        var num1 = document.getElementById("ipf1").value;
+        var num2 = document.getElementById("ipf2").value;
+
+        var result;
+
+        var spanObj = document.getElementById("res");
+
+        if (isNaN(num1) || isNaN(num2)) {
+            result = "Please Enter Valid Input";
+            spanObj.style.color = "red";
+        } else {
+            result = Number(num1) / Number(num2);
+            spanObj.style.color = "green";
+        }
+
+        spanObj.innerHTML = result;
+
+    }
+
+
+</script>
+
+</html>

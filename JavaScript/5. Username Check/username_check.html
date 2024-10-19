@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Username Check Availability</title>
+  </head>
+
+  <body onload="load()">
+    <h1>1. Username Check Availability</h1>
+
+    <p id="names"></p>
+
+    Username:
+    <input
+      type="text"
+      id="inputbox"
+      onblur="checkUserName()"
+      placeholder="Enter username"
+    />
+    <br /><br />
+
+    <span id="msg"></span>
+  </body>
+  <script>
+    var userNames = "Surya, Bharath, Udhaya, Vijay, Manikandan";
+
+    function load() {
+      document.getElementById("names").innerHTML = "Usernames: " + userNames;
+    }
+
+    function checkUserName() {
+      var inputBoxValue = document.getElementById("inputbox").value;
+      var msg = document.getElementById("msg");
+      var result = userNames.indexOf(inputBoxValue);
+
+      if (!inputBoxValue == "") {
+        if (result <= -1) {
+          msg.innerHTML = "Congrats username is available for you";
+          msg.style.color = "green";
+        } else {
+          msg.innerHTML = "This username is already taken";
+          document.getElementById("inputbox").value = "";
+          msg.style.color = "red";
+        }
+      } else {
+        msg.style.display = "none";
+        alert("Please enter some valid inputs");
+      }
+    }
+  </script>
+</html>

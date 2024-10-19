@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+</head>
+
+<body onload="divDisplay()">
+    
+    <h1>1. ToDo List with Array Methods</h1>
+
+    Director ToDo List: <input type="text" id="inputbox"> <br><br>
+
+    <button onclick="manipulateList('push')">Push</button> &nbsp;
+    <button onclick="manipulateList('pop')">Pop</button> &nbsp;
+    <button onclick="manipulateList('shift')">Shift</button> &nbsp;
+    <button onclick="manipulateList('unshift')">Unshift</button> &nbsp;
+
+    <div id="todolist"></div>
+    <span id="errormsg" style="display: none;"></span>
+
+</body>
+<script>
+
+    var directorList = [];
+    var errorMsg = document.getElementById("errormsg");
+
+    function divDisplay() {
+
+        var domList = "<ul>"
+
+        for (var i = 0; i < directorList.length; i++) {
+            domList += "<li>" + directorList[i] + "</li>";
+        }
+        domList += "</ul>";
+        document.getElementById("todolist").innerHTML = domList;
+
+    }
+
+    function manipulateList(addlist) {
+
+        var inputBox = document.getElementById("inputbox").value;
+
+        if (!inputBox == "") {
+
+            switch (addlist) {
+                case 'push':
+                    directorList.push(inputBox);
+                    break;
+
+                case 'pop':
+                    directorList.pop();
+                    break;
+
+                case 'shift':
+                    directorList.shift();
+                    break;
+
+                case 'unshift':
+                    directorList.unshift(inputBox);
+                    break;
+
+                default: 
+                    alert("something went worng");
+            }
+            console.log(directorList);
+            errorMsg.style.display = "none";
+            divDisplay();
+
+        } else {
+            errorMsg.innerHTML = "Please Enter Some Values...";
+            errorMsg.style.color = "red";
+            errorMsg.style.display = "block";
+        }
+    }
+</script>
+
+</html>

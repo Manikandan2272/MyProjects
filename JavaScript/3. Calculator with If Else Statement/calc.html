@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+
+    <h1>1. Calculator using with if-else condition:</h1>
+
+    <Label>Number 1: </Label><input type="text" id="ipf1"> <br><br>
+
+    <label>Number 2: </label><input type="text" id="ipf2"> <br><br>
+
+    <button onclick="doCalc('add')">Add</button> &nbsp;
+    <button onclick="doCalc('sub')">Sub</button> &nbsp;
+    <button onclick="doCalc('mul')">Mul</button> &nbsp;
+    <button onclick="doCalc('div')">Div</button> &nbsp;<br><br>
+
+    Result: <span id="res"></span>
+
+</body>
+<script>
+
+    function doCalc(op) {
+
+        var num1 = document.getElementById("ipf1").value;
+        var num2 = document.getElementById("ipf2").value;
+
+        var result;
+
+        var spanObj = document.getElementById("res");
+
+        if (!num1 == "" && !num2 == "") {
+            if (isNaN(num1) || isNaN(num2)) {
+                result = "Please Enter Valid Inputs";
+                spanObj.style.color = "red";
+            } else {
+                if (op == "add") {
+                    result = Number(num1) + Number(num2);
+                } else if (op == "sub") {
+                    result = num1 - num2;
+                } else if (op == "mul") {
+                    result = num1 * num2;
+                } else if (op == "div") {
+                    result = num1 / num2;
+                } else {
+                    result = "Something went wrong";
+                    spanObj.style.color = "red";
+                }
+                spanObj.style.color = "green";
+            }
+            spanObj.innerHTML = result;
+        } else{
+            alert("Please Enter Some Values");
+        }
+    }
+
+</script>
+
+</html>

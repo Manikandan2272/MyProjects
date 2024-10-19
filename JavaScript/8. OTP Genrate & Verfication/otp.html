@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Generation & Verification</title>
+</head>
+
+<body>
+
+    <h1>1. OTP Generation</h1>
+
+    <button onclick="generateOTP()">Generate OTP</button> <br><br>
+    <p>OTP Number: <span id="otpnum"></span></p><br>
+
+    <h1>2. OTP Verification</h1>
+
+    <label for="otpnumber">OTP: </label><input type="number" id="otpnumber" placeholder="Enter otp"> <br><br>
+    <button onclick="verifyOTP()">Verify</button> <br><br>
+    <span id="showmsg"></span>
+
+</body>
+<script>
+
+    //Ex-1
+
+    var result;
+
+    function generateOTP() {
+        var otpNumber = document.getElementById("otpnum");
+        result = Math.round(Math.random() * 100000);
+        otpNumber.innerHTML = result;
+        otpNumber.style.fontWeight = "bolder";
+    }
+
+    //Ex-2
+
+    function verifyOTP() {
+        var otpNum = document.getElementById("otpnumber").value;
+        var spanObj = document.getElementById("showmsg");
+
+        if (otpNum == result) {
+            spanObj.innerHTML = "OTP Verified Successfully";
+            spanObj.style.color = "green";
+        } else {
+            spanObj.innerHTML = "Please Enter Valid OTP";
+            spanObj.style.color = "red";
+        }
+    }
+
+</script>
+
+</html>

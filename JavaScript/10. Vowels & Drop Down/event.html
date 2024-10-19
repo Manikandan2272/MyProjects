@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Event</title>
+</head>
+
+<body>
+
+    <!-- Ex-1 -->
+
+    <h1>1. Allow only Vowel Letters</h1>
+
+    Enter a Character: <input type="text" name="vowels" id="inputbox" onkeypress="return getVowelsLetter(event)">
+    <br><br>
+
+    <!-- Ex-2 -->
+
+    <h1>2. Drop Down</h1>
+
+    Select Country: <select id="country" onchange="selectCountry()">
+        <option value="Please Select any Country">Select Country</option>
+        <option value="India">India</option>
+        <option value="Sri Lanka">Sri Lanka</option>
+        <option value="United Kingdom(UK)">United Kingdom(UK)</option>
+        <option value="United States(US)">United States(US)</option>
+    </select> <br><br>
+
+    <p>You have selected: <span id="showcountry"></span></p>
+
+</body>
+<script>
+
+    //Ex-1
+
+    function getVowelsLetter(event) {
+
+        if (event.key == "a") {
+            console.log(event.key);
+        } else if (event.key == "e") {
+            console.log(event.key);
+        } else if (event.key == "i") {
+            console.log(event.key);
+        } else if (event.key == "o") {
+            console.log(event.key);
+        } else if (event.key == "u") {
+            console.log(event.key);
+        } else {
+            return false;
+        }
+    }
+
+    //Ex-2
+
+    function selectCountry() {
+        var selectCountry = document.getElementById("country").value;
+        var result = document.getElementById("showcountry");
+        result.innerHTML = selectCountry;
+    }
+
+</script>
+
+</html>

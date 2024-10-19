@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String Method</title>
+  </head>
+
+  <body>
+    <!-- Ex-1 -->
+
+    <h1>1. Username Check as Case Insensitive</h1>
+
+    <p id="unames"></p>
+
+    Username: <input type="text" id="uname" onblur="checkUserName()" />
+    <br /><br />
+
+    Result: <span id="unameres"></span> <br /><br />
+
+    <hr />
+
+    <!-- Ex-2 -->
+
+    <h1>2. Find and Replace</h1>
+
+    <p id="para"></p>
+
+    Find: <input type="text" id="find" /> <br /><br />
+
+    Replace: <input type="text" id="rep" /> &nbsp;
+
+    <button onclick="updateName()">Update</button> <br /><br />
+
+    Result: <span id="res"></span>
+  </body>
+  <script>
+    // Ex-1
+
+    var userNames = "Surya, Bharath, Udhaya, Vijay, Manikandan";
+    document.getElementById("unames").innerHTML = userNames;
+
+    function checkUserName() {
+      var uname = document.getElementById("uname").value;
+      var spanObj = document.getElementById("unameres");
+      var regEx = new RegExp(uname, "i");
+      var res = userNames.search(regEx);
+
+      if (res <= -1) {
+        spanObj.innerHTML = "This name is available for you";
+        spanObj.style.color = "green";
+      } else {
+        if (uname == "") {
+          alert("Please Enter Username");
+        } else {
+          spanObj.innerHTML = "This name is already taken";
+          document.getElementById("uname").value = "";
+          spanObj.style.color = "red";
+        }
+      }
+    }
+
+    // Ex-2
+
+    var str = "Hello Manikandan, Thanks for visiting this webpage...";
+    document.getElementById("para").innerHTML = str;
+    var spanRes = document.getElementById("res");
+
+    function updateName() {
+      var findName = document.getElementById("find").value;
+      var replaceName = document.getElementById("rep").value;
+      var regEx = new RegExp(findName, "ig");
+      str = str.replace(regEx, replaceName);
+      spanRes.innerHTML = str;
+    }
+  </script>
+</html>

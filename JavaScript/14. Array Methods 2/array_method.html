@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Methods</title>
+</head>
+
+<body onload="load()">
+
+    <!-- Ex-1 -->
+
+    <h1>1. Name check availability with case insensitive using for loop:</h1>
+
+    <p id="uname"></p>
+
+    Username: <input type="text" id="inputbox" onblur="checkUsername()"> <br><br>
+
+    <span id="result"></span><br>
+
+    <!-- Ex-2 -->
+
+    <h1>2. Separate Numbers and Strings in a Spearate Array:</h1>
+
+    <p id="numberarray"></p>
+
+    <button onclick="SeparateNumberString()">Spearate String & Number</button> <br><br>
+
+    Numbers: <span id="number"></span> <br><br>
+    String: <span id="string"></span> <br><br>
+
+    <!-- Ex-3 -->
+
+    <h1>3. Find Longest word form the Array:</h1>
+
+    <p id="arrayvalues"></p>
+
+    <button onclick="showLongestWord()">Get Longest Word</button> <br><br>
+
+    Result: <span id="arrayresult"></span> <br><br>
+
+    <!-- Ex-4 -->
+
+    <h1>4. Add Grace Marks:</h1>
+
+    <p id="numbervalues"></p>
+
+    Grace Mark: <input type="text" id="inputboxvalue"> <br><br>
+
+    <button onclick="addGraceMark()">Add Grace Mark</button> <br><br>
+
+    Updated Marks: <span id="gracemark"></span> <br><br>
+
+    <!-- Ex-5 -->
+
+    <h1>5. Filter Only Passed Subjects:</h1>
+
+    <p>Pass Marks: <span id="num"></span></p>
+
+    Show only Passed Scores: <input type="checkbox" id="checkbox" onclick="passMarkValue()"> <br>
+
+    <p id="passresult"></p>
+
+</body>
+<script>
+
+    var userNames = ["Surya", "Bharath", "Udhaya", "Vijay", "Manikandan"];
+
+    var numberString = ["Surya", 5, "Bharath", 24, "Udhaya", 5, "Vijay", 9, "Manikandan", 17];
+
+    var longestWord = ["Hai", "Hello", "Welcome", "Good Morning"];
+
+    var graceMark = [82, 54, 67, 97, 31]
+
+    var passMarks = [52, 62, 42, 82, 22, 92];
+
+    var result;
+
+    function load() {
+        document.getElementById("uname").innerHTML = "Usernames: " + userNames;
+        document.getElementById("numberarray").innerHTML = numberString;
+        document.getElementById("arrayvalues").innerHTML = longestWord;
+        document.getElementById("numbervalues").innerHTML = graceMark;
+        document.getElementById("num").innerHTML = passMarks;
+    }
+
+    //Ex-1 Username Check in Case-Insensitive
+
+    function checkUsername() {
+
+        var tempArray = [];
+        var inputBox = document.getElementById("inputbox").value;
+        var spanObj = document.getElementById("result");
+
+        for (var i = 0; i < userNames.length; i++) {
+            var newName = userNames[i].toLowerCase();
+            tempArray.push(newName);
+        }
+
+        var userName = inputBox.toLowerCase();
+        var validUserName = tempArray.indexOf(userName);
+
+        if (validUserName <= -1) {
+            spanObj.innerHTML = "Congrats username is available";
+            spanObj.style.color = "green";
+        } else {
+            document.getElementById("inputbox").value = "";
+            spanObj.innerHTML = "Username is already taken";
+            spanObj.style.color = "red";
+        }
+    }
+
+    //Ex-2 Separate Number and String 
+
+    function SeparateNumberString() {
+
+        var separateString = numberString.filter(function (arrayValues) {
+            return typeof arrayValues === "string";
+        });
+
+        document.getElementById("string").innerHTML = separateString;
+
+        var separateNumber = numberString.filter(function (arrayValues) {
+            return typeof arrayValues === "number";
+        });
+
+        document.getElementById("number").innerHTML = separateNumber;
+
+    }
+
+    //Ex-3 Find Longest Word in Array
+
+    function findLongestWord() {
+
+        var longestWordValue = "";
+        
+        for (var i = 0; i < longestWord.length; i++) {
+            if (longestWord[i].length > longestWordValue.length) {
+                longestWordValue = longestWord[i];
+            }
+        }
+        return longestWordValue;
+    }
+
+    function showLongestWord() {
+        var longestWordResult = findLongestWord();
+        document.getElementById("arrayresult").innerHTML = longestWordResult;
+
+    }
+
+    //Ex-4 Add Grace Mark
+
+    function addGraceMark() {
+
+        var addGraceMark = parseInt(document.getElementById("inputboxvalue").value);
+
+        for (var i = 0; i < graceMark.length; i++) {
+            if (graceMark[i] < 100) {
+                graceMark[i] += addGraceMark;
+                if (graceMark[i] > 100) {
+                    graceMark[i] = 100;
+                }
+            }
+        }
+
+        document.getElementById("gracemark").innerHTML = graceMark;
+
+    }
+
+    //Ex-5 Check Pass Mark
+
+    function passMarkValue() {
+        
+        var checkBox = document.getElementById("checkbox");
+        var passMarkResult = passMarks.filter(function (mark) {
+            return mark >= 60;
+        });
+
+        if (checkBox.checked) {
+            document.getElementById("num").innerHTML = passMarkResult;
+        } else {
+            document.getElementById("num").innerHTML = passMarks;
+        }
+
+    }
+
+</script>
+
+</html>

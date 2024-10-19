@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Storage</title>
+  </head>
+
+  <body>
+    <h1>1. User Register</h1>
+
+    Username: <input type="text" id="name" autocomplete="off" /> <br /><br />
+
+    Password: <input type="password" id="pwd" autocomplete="off" /> <br /><br />
+
+    Email: <input type="email" id="email" autocomplete="off" /> <br /><br />
+
+    <button onclick="register()">Register</button> <br /><br />
+
+    <span id="msg"></span> <br /><br />
+
+    <h1>2. Registered User Login</h1>
+
+    Username: <input type="text" id="uname" autocomplete="off" /><br /><br />
+
+    Password: <input type="password" id="upwd" autocomplete="off" />
+    <br /><br />
+
+    <button onclick="login()">Login</button><br /><br />
+
+    <span id="showmsg"></span>
+  </body>
+  <script>
+    var usersName = [];
+    var usersPassword = [];
+    var usersEmail = [];
+
+    function register() {
+      var username = document.getElementById("name").value;
+      var password = document.getElementById("pwd").value;
+      var email = document.getElementById("email").value;
+
+      if (!username == "" && !password == "" && !email == "") {
+        usersName.push({ Username: username });
+        usersPassword.push({ Password: password });
+        usersEmail.push({ Email: email });
+
+        localStorage.setItem("Username", JSON.stringify(usersName));
+        localStorage.setItem("Password", JSON.stringify(usersPassword));
+        localStorage.setItem("Email", JSON.stringify(usersEmail));
+
+        document.getElementById("msg").innerHTML =
+          "User " + username + " is Successfully Registered";
+        document.getElementById("msg").style.color = "green";
+      } else {
+        alert("Please Enter Your Data's");
+      }
+    }
+
+    function login() {
+      var storedName = localStorage.getItem("Username");
+      var storedPassword = localStorage.getItem("Password");
+      var showMsg = document.getElementById("showmsg");
+
+      var username = document.getElementById("uname").value;
+      var password = document.getElementById("upwd").value;
+
+      if (!username == "" && !password == "") {
+        var checkUserName = storedName.indexOf(username);
+        var checkUserPassword = storedPassword.indexOf(password);
+
+        if (checkUserName && checkUserPassword >= 0) {
+          showMsg.innerHTML = "This user is already registered";
+          showMsg.style.color = "green";
+        } else {
+          showMsg.innerHTML = "Username and Password not registered";
+          showMsg.style.color = "red";
+        }
+      } else {
+        alert("Please Enter Your Username and Password");
+      }
+    }
+  </script>
+</html>

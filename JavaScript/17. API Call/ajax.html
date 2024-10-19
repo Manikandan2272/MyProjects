@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+
+<body>
+
+    <!-- Ex-1 -->
+
+    <h1>1. AJAX API Call</h1>
+
+    Movie Name: <input type="text" onblur="getMovieInfo(this.value)"> <br><br>
+
+    <div id="loader" style="display: none;">
+        <img src="loader.gif" height="200px">
+    </div>
+
+    <div id="movieinfo" style="display: none;">
+        <h2>Movie Info</h2>
+        <img src="" id="movieimg" height="250px"><br><br>
+        Movie Name: <span id="name"></span> &nbsp;<span>(<span id="year"></span>)</span><br><br>
+        Rating: <span id="rateing"></span><br><br>
+        Actors: <span id="actor"></span><br><br>
+        Genre: <span id="genre"></span><br><br>
+        Director: <span id="director"></span><br><br>
+        Runtime: <span id="runtime"></span><br><br>
+        Language: <span id="language"></span><br><br>
+        Plot: <span id="plot"></span>
+    </div>
+
+</body>
+<script>
+
+    //Ex-1
+
+    function getMovieInfo(movieName) {
+
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function () {
+
+            if (xhttp.readyState === 4) {
+                var response = JSON.parse(xhttp.responseText)
+                document.getElementById("movieimg").src = response.Poster;
+                document.getElementById("name").innerHTML = response.Title;
+                document.getElementById("year").innerHTML = response.Year;
+                document.getElementById("rateing").innerHTML = response.Ratings[0].Value;
+                document.getElementById("actor").innerHTML = response.Actors;
+                document.getElementById("genre").innerHTML = response.Genre;
+                document.getElementById("director").innerHTML = response.Director;
+                document.getElementById("runtime").innerHTML = response.Runtime;
+                document.getElementById("language").innerHTML = response.Language;
+                document.getElementById("plot").innerHTML = response.Plot;
+                document.getElementById("movieinfo").style.display = "block";
+                document.getElementById("loader").style.display = "none";
+            } else {
+                document.getElementById("loader").style.display = "block";
+                document.getElementById("movieinfo").style.display = "none";
+            }
+
+        }
+
+        xhttp.open("GET", "http://www.omdbapi.com/?t=" + movieName + "&apikey=c429066e");
+        xhttp.send();
+
+    }
+
+</script>
+
+</html>
