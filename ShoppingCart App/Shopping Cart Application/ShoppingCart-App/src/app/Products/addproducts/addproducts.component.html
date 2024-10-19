@@ -1,0 +1,43 @@
+<div class="w3l_banner_nav_right">
+    <div class="w3_login">
+        <h3>Add Products</h3>
+        <div class="w3_login_module">
+            <div class="module form-module">
+                <div class="toggle">
+                </div>
+                <div class="form" style="text-align: center;">
+                    <h2>Create Products</h2>
+
+                    <p class="alert alert-success" ngClass="{'alert-danger': isError}" *ngIf="msg">{{msg}}</p>
+
+                    <form (submit)="createProduct(form)" #form="ngForm">
+
+                        <select name="catId" ngModel style="padding: 10px 20px; width: 100%;">
+                            <option value="">Please select Categories</option>
+                            <option value="{{cate._id}}" *ngFor="let cate of categoriesList">{{cate.catName}}</option>
+                        </select>
+
+                        <br><br>
+                        <input type="text" name="pdtName" ngModel placeholder="Product Name">
+
+                        <input type="number" name="pdtPrice" ngModel placeholder="Product Price"
+                            style="padding: 10px 20px; width: 100%;">
+
+                        <br><br>
+                        <input type="file" name="pdtImg" ngModel (change)="selectedImg($event)">
+
+                        <br><br>
+
+                        <textarea name="pdtDesc" ngModel cols="30" rows="5" placeholder="Product Details"></textarea>
+
+                        <br><br>
+
+                        <input type="submit" value="Add Products">
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

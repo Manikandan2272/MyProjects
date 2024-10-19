@@ -1,0 +1,124 @@
+<div class="w3l_banner_nav_right">
+    <div class="w3_login">
+        <h3>Sign In & Sign Up</h3>
+        <div class="w3_login_module">
+            <div class="module form-module">
+                <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+                    <div class="tooltip">Click Me</div>
+                </div>
+                <!-- Reactive Form -->
+
+                <div class="form">
+
+                    <h2>Login to your account</h2>
+
+                    <form action="#" method="post" [formGroup]="loginForm" (submit)="doLogin()">
+
+                        <p class="alert alert-danger" *ngIf="msg">
+                            {{msg}}
+                        </p>
+
+                        <input type="text" name="username" placeholder="Username" autocomplete="off"
+                            formControlName="Username">
+                        <p class="alert alert-danger" *ngIf="usernameCtrl.errors?.['required'] && usernameCtrl.touched">
+                            Please Enter Valid Username
+                        </p>
+                        <p class="alert alert-danger"
+                            *ngIf="usernameCtrl.errors?.['minlength'] && usernameCtrl.touched">
+                            Username Should be Minimum 3 Characters
+                        </p>
+
+                        <input type="password" name="password" placeholder="Password" autocomplete="off"
+                            formControlName="Password">
+                        <p class="alert alert-danger"
+                            *ngIf="userpasswordCtrl.errors?.['required'] && userpasswordCtrl.touched">
+                            Please Enter Valid Password
+                        </p>
+                        <p class="alert alert-danger"
+                            *ngIf="userpasswordCtrl.errors?.['minlength'] && userpasswordCtrl.touched">
+                            Password Should be Minimum 4 Character
+                        </p>
+
+                        <input type="submit" value="Login" [disabled]="loginForm.invalid">
+                    </form>
+                </div>
+
+                <!-- Template Driven Form -->
+
+                <div class="form">
+                    <h2>Create an account</h2>
+
+                    <form action="#" method="post" #form="ngForm" (submit)="doRegister(form)">
+
+                        <p class="alert alert-success" *ngIf="msg">
+                            {{msg}}
+                        </p>
+
+                        <input type="text" name="Username" placeholder="Username" autocomplete="off" required ngModel
+                            #uname="ngModel" minlength="3">
+                        <p class="alert alert-danger" *ngIf="uname.errors?.['required'] && uname.touched">
+                            Please Enter Valid Username
+                        </p>
+                        <p class="alert alert-danger" *ngIf="uname.errors?.['minlength'] && uname.touched">
+                            Username Should be Minimum 3 Characters
+                        </p>
+
+                        <input type="password" name="Password" placeholder="Password" autocomplete="off" required
+                            ngModel #userpassword="ngModel" minlength="8">
+                        <p class="alert alert-danger"
+                            *ngIf="userpassword.errors?.['minlength'] && userpassword.touched">
+                            Password Should be Minimum 8 Characters
+                        </p>
+
+                        <input type="email" name="Email" placeholder="Email Address" autocomplete="off" required ngModel
+                            #useremail="ngModel" email>
+                        <p class="alert alert-danger" *ngIf="useremail.errors?.['email'] && useremail.touched">
+                            Please Enter Valid Email
+                        </p>
+
+                        <input type="text" name="Phone" placeholder="Phone Number" autocomplete="off" required ngModel
+                            #usernumber="ngModel" pattern="^([1-9][0-9]*)$">
+                        <p class="alert alert-danger" *ngIf="usernumber.errors?.['pattern']">
+                            Phone Number Accept Numbers Only
+                        </p>
+
+                        <input type="submit" value="Register" [disabled]="form.invalid">
+                    </form>
+                </div>
+                <div class="cta"><a href="#">Forgot your password?</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<!-- newsletter-top-serv-btm -->
+<div class="newsletter-top-serv-btm">
+    <div class="container">
+        <div class="col-md-4 wthree_news_top_serv_btm_grid">
+            <div class="wthree_news_top_serv_btm_grid_icon">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
+            <h3>Nam libero tempore</h3>
+            <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
+                saepe eveniet ut et voluptates repudiandae sint et.</p>
+        </div>
+        <div class="col-md-4 wthree_news_top_serv_btm_grid">
+            <div class="wthree_news_top_serv_btm_grid_icon">
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+            </div>
+            <h3>officiis debitis aut rerum</h3>
+            <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
+                saepe eveniet ut et voluptates repudiandae sint et.</p>
+        </div>
+        <div class="col-md-4 wthree_news_top_serv_btm_grid">
+            <div class="wthree_news_top_serv_btm_grid_icon">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+            </div>
+            <h3>eveniet ut et voluptates</h3>
+            <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
+                saepe eveniet ut et voluptates repudiandae sint et.</p>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
